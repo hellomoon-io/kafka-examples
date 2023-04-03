@@ -1,6 +1,6 @@
 {
     "dependencies": {
-      "kafkajs": "^2.2.4"
+        "kafkajs": "^2.2.4",
+        "kafkajs-lz4": "^1.2.1"
     }
-  }
-  
+}
