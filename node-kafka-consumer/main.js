@@ -1,5 +1,5 @@
 const {CompressionCodecs, CompressionTypes, Kafka} = require('kafkajs');
-const LZ4Codec = require('kafkajs-lz4');
+const lz4 = require('lz4');
 
 const bootstrapServers = "bootstrap servers"; // Contact us for access.
 const username = "username";
@@ -7,7 +7,7 @@ const password = "password";
 const topic = "topic";
 
 async function main() {
-    CompressionCodecs[CompressionTypes.LZ4] = new LZ4Codec().codec
+    CompressionCodecs[CompressionTypes.LZ4] = () => ({ decompress: lz4.decode });
     const consumer = new Kafka({
         brokers: bootstrapServers.split(","),
         sasl: {
